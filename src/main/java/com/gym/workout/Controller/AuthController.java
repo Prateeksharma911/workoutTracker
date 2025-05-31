@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import com.gym.workout.DTO.AuthenticationRequestDTO;
+import com.gym.workout.Entity.User;
+import com.gym.workout.Util.JwtUtil;
+
 @RestController
 public class AuthController {
 
@@ -22,7 +26,7 @@ public class AuthController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/login")
-    public String createAuthenticationToken(@RequestBody AuthenticationRequest request) throws Exception {
+    public String createAuthenticationToken(@RequestBody AuthenticationRequestDTO request) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
