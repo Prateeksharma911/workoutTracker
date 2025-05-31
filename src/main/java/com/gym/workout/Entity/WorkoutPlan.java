@@ -3,6 +3,7 @@ package com.gym.workout.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import java.util.Date;
 
 @Entity
@@ -13,6 +14,7 @@ public class WorkoutPlan {
     private Date date;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Long getId() {
